@@ -18,6 +18,7 @@ let tweetSchema = new Schema({
       text: String,
       date: Date,
       score: Number,
+      final: Boolean,
     },
   ],
   finalized: {
