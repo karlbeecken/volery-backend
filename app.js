@@ -1,9 +1,10 @@
-var express = require("express");
-var logger = require("morgan");
+const express = require("express");
+const logger = require("morgan");
+const bodyParser = require('body-parser');
 
-var usersRouter = require("./routes/users");
+const usersRouter = require("./routes/users");
 
-var app = express();
+let app = express();
 
 app.use(logger("dev"));
 app.use(express.json());
