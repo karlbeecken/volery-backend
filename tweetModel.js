@@ -1,9 +1,11 @@
 const mongoose = require("mongoose");
 const { v4: uuidv4 } = require("uuid");
 
-let tweetSchema = mongoose.Schema({
-  id: {
-    type: ObjectId,
+var Schema = mongoose.Schema;
+
+let tweetSchema = new Schema({
+  _id: {
+    type: String,
     required: true,
     default: uuidv4(),
   },
@@ -18,7 +20,10 @@ let tweetSchema = mongoose.Schema({
       score: Number,
     },
   ],
-  finalized: Boolean,
+  finalized: {
+    type: Boolean,
+    default: false,
+  },
   created: {
     type: Date,
     default: Date.now,
