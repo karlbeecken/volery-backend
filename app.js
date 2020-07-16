@@ -3,7 +3,6 @@ const logger = require("morgan");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 
-const usersRouter = require("./routes/users");
 const tweetsRouter = require("./routes/tweets");
 
 let app = express();
@@ -13,7 +12,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.use("/users", usersRouter);
 app.use("/tweets?", tweetsRouter);
 
 const mongoDB = "mongodb://localhost/tweets";
