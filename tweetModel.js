@@ -15,10 +15,22 @@ let tweetSchema = new Schema({
   },
   proposals: [
     {
-      text: String,
-      date: Date,
-      score: Number,
-      final: Boolean,
+      text: {
+        type: String,
+        default: "",
+      },
+      date: {
+        type: Date,
+        default: Date.now,
+      },
+      score: {
+        type: Number,
+        default: 0,
+      },
+      final: {
+        type: Boolean,
+        default: false,
+      },
     },
   ],
   finalized: {
