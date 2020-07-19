@@ -24,7 +24,7 @@ router.post("/", (req, res, next) => {
   tweetInstance.save((err, tweet) => {
     if (err) console.error(err);
 
-    res.json(tweet); // TODO: send proper response
+    res.status(200).json(tweet); // TODO: send proper response
   });
 });
 
@@ -38,6 +38,17 @@ router.post("/:id/proposal", (req, res, next) => {
     }
   );
   res.json(); // TODO: send proper response
+});
+
+router.put("/:id/finalize", (req, res, next) => {
+  Tweet.findOneAndUpdate(
+    { "_id": req.params.id, "proposals._id": req.body.proposal },
+    { finalized: true, $set: { "proposals.$.final": true } },
+    (err, tweet) => {
+      if (err) console.log(err);
+      res.status(200).json(tweet);
+    }
+  );
 });
 
 module.exports = router;
