@@ -29,12 +29,13 @@ router.post("/", (req, res, next) => {
 });
 
 router.post("/:id/proposal", (req, res, next) => {
-  console.log(req.body);
   Tweet.findOneAndUpdate(
     { _id: req.params.id },
     { $push: { proposals: { text: req.body.text } } },
+    { new: true },
     (err, tweet) => {
       if (err) console.error(err);
+      console.log(tweet);
 
       res.status(200).json(tweet); // TODO: send proper response
     }
@@ -45,6 +46,7 @@ router.put("/:id/finalize", (req, res, next) => {
   Tweet.findOneAndUpdate(
     { _id: req.params.id, "proposals._id": req.body.proposal },
     { finalized: true, $set: { "proposals.$.final": true } },
+    { new: true },
     (err, tweet) => {
       if (err) console.log(err);
       res.status(200).json(tweet);
