@@ -33,16 +33,17 @@ router.post("/:id/proposal", (req, res, next) => {
   Tweet.findOneAndUpdate(
     { _id: req.params.id },
     { $push: { proposals: { text: req.body.text } } },
-    (err, tweets) => {
-      console.log(err);
+    (err, tweet) => {
+      if (err) console.error(err);
+
+      res.status(200).json(tweet); // TODO: send proper response
     }
   );
-  res.json(); // TODO: send proper response
 });
 
 router.put("/:id/finalize", (req, res, next) => {
   Tweet.findOneAndUpdate(
-    { "_id": req.params.id, "proposals._id": req.body.proposal },
+    { _id: req.params.id, "proposals._id": req.body.proposal },
     { finalized: true, $set: { "proposals.$.final": true } },
     (err, tweet) => {
       if (err) console.log(err);
