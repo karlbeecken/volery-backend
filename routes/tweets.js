@@ -35,7 +35,6 @@ router.post("/:id/proposal", (req, res, next) => {
     { new: true },
     (err, tweet) => {
       if (err) console.error(err);
-      console.log(tweet);
 
       res.status(200).json(tweet); // TODO: send proper response
     }
