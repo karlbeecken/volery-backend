@@ -1,6 +1,6 @@
-# tooltweet-backend
+# volery-backend
 
-the express mongodb based backend powering the tooltweet platform
+the express mongodb based backend powering the volery platform
 
 ## sh\*tty api doc
 
