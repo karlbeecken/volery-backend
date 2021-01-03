@@ -14,7 +14,7 @@ if (process.env.DEV === "true") {
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-var cors = require("cors");
+app.use(cors());
 
 app.use("/tweets?", tweetsRouter);
 
