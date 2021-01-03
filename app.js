@@ -2,6 +2,7 @@ const express = require("express");
 const logger = require("morgan");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+var cors = require("cors");
 
 const tweetsRouter = require("./routes/tweets");
 
@@ -13,6 +14,7 @@ if (process.env.DEV === "true") {
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+var cors = require("cors");
 
 app.use("/tweets?", tweetsRouter);
 
