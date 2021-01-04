@@ -7,7 +7,9 @@ let tweetSchema = new Schema({
   _id: {
     type: String,
     required: true,
-    default: uuidv4(),
+    default: function genUUID() {
+      return uuidv4();
+    },
   },
   name: {
     type: String,
